@@ -1,29 +1,29 @@
-a = 10;//center_radius
-b = 5;//side_radius
-c = 10;//side_position
-d = 5;//height
+center_radius = 10;
+side_radius= 5;
+side_position= 10;
+height= 5;
 tool_height = 3;
-$fn = 40;//number of polygon
+$fn = 40;
 
 module target(){
-	linear_extrude(height = d){
+	linear_extrude(height = height){
 		hull(){
-			circle(r = a);
-			translate([c,0,0])
-				circle(r = b);
-			translate([-c,0,0])
-				circle(r = b);
+			circle(r = center_radius);
+			translate([side_position,0,0])
+				circle(r = side_radius);
+			translate([-side_position,0,0])
+				circle(r = side_radius);
 		}
 	}
 }
 
 module tool(){
-	#translate([0,0,d/2])
-		cylinder(h = tool_height, r1 = a/2, r2 = a/2);
-	#translate([10,0,d/2])
-		cylinder(h = tool_height, r1 = b/2, r2 = b/2);
-	#translate([-10,0,d/2])
-		cylinder(h = tool_height, r1 = b/2, r2 = b/2);
+	#translate([0,0,height/2])
+		cylinder(h = tool_height, r1 = center_radius/2, r2 = center_radius/2);
+	#translate([10,0,height/2])
+		cylinder(h = tool_height, r1 = side_radius/2, r2 = side_radius/2);
+	#translate([-10,0,height/2])
+		cylinder(h = tool_height, r1 = side_radius/2, r2 = side_radius/2);
 }
 
 difference(){
