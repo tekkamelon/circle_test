@@ -9,11 +9,11 @@ $fn = 35;
 module target(){
 	linear_extrude(height = height){
 		hull(){
-			circle(r = center_radius);
-			translate([side_position,0,0])
-				circle(r = side_radius);
-			translate([-side_position,0,0])
-				circle(r = side_radius);
+			#circle(r = center_radius);
+				translate([side_position,0,0])
+					circle(r = side_radius);
+				translate([-side_position,0,0])
+					circle(r = side_radius);
 		}
 	}
 }
